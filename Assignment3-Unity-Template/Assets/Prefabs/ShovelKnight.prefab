@@ -53,7 +53,7 @@ MonoBehaviour:
   castDistance: 0.1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &1911249325
 MonoBehaviour:
   m_ObjectHideFlags: 0
