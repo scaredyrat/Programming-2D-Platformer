@@ -1906,11 +1906,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1911249323, guid: 47f7451027f91be4584a64b9c091d617, type: 3}
       propertyPath: boxSize.y
-      value: 0.27
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 1911249323, guid: 47f7451027f91be4584a64b9c091d617, type: 3}
       propertyPath: castDistance
-      value: 0.04
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1911249323, guid: 47f7451027f91be4584a64b9c091d617, type: 3}
       propertyPath: groundLayer.m_Bits
