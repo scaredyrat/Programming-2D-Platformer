@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     public float castDistance;
     public LayerMask groundLayer;
 
+    public float apexHeight;
+    public float timeToApexInSeconds;
+
+    public float jumpVelocity;
+    public float gravity;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,6 +69,17 @@ public class PlayerController : MonoBehaviour
         }
         // Player is facing same direction they were last time this function was called
         return direction;
+    }
+
+    public void isJumping()
+    {
+        if(PlayerInput.WasJumpPressed()) // and player is on the ground
+        {
+            // set bool to true (now jumping)
+        }
+        // instantly set rb.velocity.y as jumpVelocity
+        // if on the ground, set jump bool to false meaning that calculations stop
+        // next, add gravity to jumpVelocity variable if not on the ground
     }
 
     // Makes BoxCast visible in scene view
