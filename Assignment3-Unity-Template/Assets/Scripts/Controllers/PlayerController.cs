@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     FacingDirection direction;
 
     private Rigidbody2D rb;
+
     public float speed;
 
     public Vector2 boxSize;
@@ -17,8 +18,11 @@ public class PlayerController : MonoBehaviour
     public float apexHeight;
     public float timeToApexInSeconds;
 
-    public float jumpVelocity;
+    private float jumpVelocity;
+    private float tempVelocity;
+
     public float gravity;
+    public float terminalVelocity;
 
     private void Awake()
     {
@@ -26,13 +30,20 @@ public class PlayerController : MonoBehaviour
 
         // Set initial facing direction
         direction = FacingDirection.Right;
+
+        jumpVelocity = 2 * apexHeight / timeToApexInSeconds;
+    }
+
+    void FixedUpdate()
+    {
+        HandleJump();
     }
 
     public bool IsWalking()
     {
         // Get horizontal input and adjust velocity based on it
         float inputX = PlayerInput.GetDirectionalInput().x;
-        rb.velocity = new Vector2(speed * inputX, 0);
+        rb.velocity = new Vector2(speed * inputX, rb.velocity.y);
 
         // If there is horizontal input then the player is walking
         if (inputX != 0)
@@ -50,13 +61,15 @@ public class PlayerController : MonoBehaviour
         {
             return true;
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     public FacingDirection GetFacingDirection()
     {
         float inputX = PlayerInput.GetDirectionalInput().x;
-
         // Player is facing right
         if(inputX > 0)
         {
@@ -71,15 +84,25 @@ public class PlayerController : MonoBehaviour
         return direction;
     }
 
-    public void isJumping()
+    public void HandleJump()
     {
-        if(PlayerInput.WasJumpPressed()) // and player is on the ground
+        if (PlayerInput.WasJumpPressed() && IsGrounded())
         {
-            // set bool to true (now jumping)
+            tempVelocity = jumpVelocity;
+            rb.velocity = new Vector3(rb.velocity.x, tempVelocity);
         }
-        // instantly set rb.velocity.y as jumpVelocity
-        // if on the ground, set jump bool to false meaning that calculations stop
-        // next, add gravity to jumpVelocity variable if not on the ground
+        else if(!IsGrounded())
+        {
+            rb.velocity = new Vector3(rb.velocity.x, tempVelocity);
+            if(IsGrounded())
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0);
+            }
+            else if (tempVelocity >= terminalVelocity)
+            {
+                tempVelocity += gravity;
+            }
+        }
     }
 
     // Makes BoxCast visible in scene view

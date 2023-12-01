@@ -49,11 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  boxSize: {x: 1.4, y: 0.24}
+  boxSize: {x: 1.4, y: 0.2}
   castDistance: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  apexHeight: 5
+  timeToApexInSeconds: 1
+  gravity: -1
+  terminalVelocity: -17
 --- !u!114 &1911249325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +141,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1467268772404152
 GameObject:
   m_ObjectHideFlags: 0
