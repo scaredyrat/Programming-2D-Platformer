@@ -193,6 +193,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // on collision enter/exit might have to be moved to the moving platform script
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        // check if moving platform tag
+            // parent player to moving platform
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        // check if moving platform tag
+            // unparent player from moving platform
+    }
+
     // Makes BoxCast visible in scene view
     private void OnDrawGizmos()
     {
