@@ -49,15 +49,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  boxSize: {x: 1.4, y: 0.2}
-  castDistance: 0.1
+  dashSpeed: 20
+  dashDuration: 0.3
+  dashCooldown: 2
+  boxSize: {x: 1.4, y: 0.37}
+  castDistance: 0.15
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
   apexHeight: 5
   timeToApexInSeconds: 1
   gravity: -1
-  terminalVelocity: -17
+  terminalVelocity: -19
 --- !u!114 &1911249325
 MonoBehaviour:
   m_ObjectHideFlags: 0
