@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd24eef26d00810d9576f09c924bfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceApexHeight: 10
+  bounceApexHeight: 15
   timeToApexInSeconds: 1
 --- !u!212 &1377498456
 SpriteRenderer:
