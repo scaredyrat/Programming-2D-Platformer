@@ -193,6 +193,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TrampolineBounce(float bouncePower)
+    {
+        tempVelocity = jumpVelocity * 1.5f;
+        rb.velocity = new Vector3(rb.velocity.x, tempVelocity);
+    }
+
     // on collision enter/exit might have to be moved to the moving platform script
     void OnCollisionEnter2D(Collision2D col)
     {
