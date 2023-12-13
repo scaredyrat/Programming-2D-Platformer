@@ -196,7 +196,7 @@ public class PlayerController : MonoBehaviour
     // Large bounce when touching a trampoline
     public void TrampolineBounce(float bouncePower)
     {
-        tempVelocity = jumpVelocity * 1.5f;
+        tempVelocity = bouncePower;
         rb.velocity = new Vector3(rb.velocity.x, tempVelocity);
     }
 
