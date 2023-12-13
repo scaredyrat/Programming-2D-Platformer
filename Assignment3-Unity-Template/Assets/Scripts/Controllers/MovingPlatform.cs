@@ -5,20 +5,28 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     // radius from point variable needed
-    // angle increment variable needed
+    [SerializeField]
+    Transform center;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float rotationRadius;
+    public float speed;
 
-    // Update is called once per frame
+    private float angle = 0f;
+
+    private Vector3 pos = new Vector3();
+
     void Update()
     {
-        // modify the x position by the radius multiplied by cos of the current angle
-        // modify the y position by the radius multiplied by sin of the current angle
+        // Rotate around parent's transform
+        pos.x = center.position.x + rotationRadius * Mathf.Cos(angle * Mathf.Deg2Rad);
+        pos.y = center.position.y + rotationRadius * Mathf.Sin(angle * Mathf.Deg2Rad);
 
-        // at the angle increment to the current angle
+        transform.position = new Vector3(pos.x, pos.y);
+        angle = angle + (speed * Time.deltaTime);
+
+        if (angle >= 360)
+        {
+            angle = 0;
+        }
     }
 }

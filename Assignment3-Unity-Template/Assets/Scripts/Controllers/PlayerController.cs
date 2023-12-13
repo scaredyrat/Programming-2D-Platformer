@@ -193,23 +193,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Large bounce when touching a trampoline
     public void TrampolineBounce(float bouncePower)
     {
         tempVelocity = jumpVelocity * 1.5f;
         rb.velocity = new Vector3(rb.velocity.x, tempVelocity);
     }
 
-    // on collision enter/exit might have to be moved to the moving platform script
+    // Parent to moving platform
     void OnCollisionEnter2D(Collision2D col)
     {
-        // check if moving platform tag
-            // parent player to moving platform
+        if (col.gameObject.CompareTag("MovingPlatform"))
+        {
+            this.transform.parent = col.transform;
+        }
     }
 
+    // Unparent from moving platform
     void OnCollisionExit2D(Collision2D col)
     {
-        // check if moving platform tag
-            // unparent player from moving platform
+        if (col.gameObject.CompareTag("MovingPlatform"))
+        {
+            this.transform.parent = null;
+        }
     }
 
     // Makes BoxCast visible in scene view

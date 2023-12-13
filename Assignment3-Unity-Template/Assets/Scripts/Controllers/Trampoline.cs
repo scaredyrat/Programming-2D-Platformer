@@ -18,7 +18,7 @@ public class Trampoline : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            // Call TrampolineBounce() to take care of velocity
+            // Call TrampolineBounce() in PlayerController to take care of velocity
             PlayerController playerScript = col.gameObject.GetComponent<PlayerController>();
             playerScript.TrampolineBounce(bouncePower);
         }
